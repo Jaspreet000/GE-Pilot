@@ -27,8 +27,8 @@ import { documentsContext } from "./../../App";
 
 const S3_BUCKET = "grant-copilot";
 const REGION = "us-east-1";
-const ACCESS_KEY = "AKIAY7BEJYRC3YUJH3FO";
-const SECRET_ACCESS_KEY = "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";
+const ACCESS_KEY = process.env.ACCESS_KEY;
+const SECRET_ACCESS_KEY = process.env.SECRET_ACCESS_KEY;
 
 const config = {
   bucketName: S3_BUCKET,
