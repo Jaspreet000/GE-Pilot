@@ -1,0 +1,111 @@
+@import '../../index.scss';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    transition: 0.5s all;
+
+    &.light {
+        background: #f9f9f9;
+      }
+
+    &.dark {
+        background: #090a0a;
+    }
+}
+
+@keyframes rays {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: 12px 12px;
+    }
+    100% {
+        transform: rotate(360deg);
+        transform-origin: 12px 12px;
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+nav {
+    padding: 24px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    a {
+        flex: 0 1 24px;
+        margin: 0 8px;
+        height: 28px;
+
+        &#Switch {
+            width: 28px;
+            height: 28px;
+            position: relative;
+            display: block;
+            overflow: hidden;
+
+            &.day {
+                color: #f4f4f8;
+            }
+
+            &.night {
+                color: #29255e;
+
+                svg {
+                    transform: rotate(180deg);
+
+                    .star {
+                        opacity: 0;
+                    }
+                }
+            }
+
+            svg {
+                position: absolute;
+                transition: 0.5s all;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        &:hover {
+            svg {
+                .rays {
+                    animation: rays 8s linear infinite;
+                }
+                .stars {
+                    .star:nth-child(1) {
+                        animation: flicker 1.2s linear infinite;
+                    }
+                    .star:nth-child(2) {
+                        animation: flicker 0.8s linear infinite;
+                        animation-delay: 0.2s;
+                    }
+                    .star:nth-child(3) {
+                        animation: flicker 1s linear infinite;
+                        animation-delay: 0.4s;
+                    }
+                }
+            }
+        }
+    }
+}
